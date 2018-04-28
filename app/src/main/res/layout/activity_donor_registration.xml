@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DonorRegistration">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Registration"
+            android:textSize="30dp"
+            android:textColor="@color/colorDarkBlue"
+            android:textStyle="bold"
+            android:gravity="center"  />
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical">
+
+
+           <EditText
+               android:id="@+id/nameInput"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:hint="Name"/>
+
+           <EditText
+               android:id="@+id/phoneInput"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:hint="Phone"/>
+           <EditText
+               android:id="@+id/emailInput"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:hint="E-mail"/>
+
+           <EditText
+               android:id="@+id/passInput"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:hint="Password"/>
+       </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Date of Birth"
+                android:textSize="20dp"
+                android:layout_weight="1"
+                />
+            <Button
+                android:id="@+id/dobInput"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Select"
+                android:layout_weight="2"
+                android:textAllCaps="false"
+                android:textSize="20sp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gender"
+                android:textSize="20dp"
+                />
+            <RadioGroup
+                android:id="@+id/genderInput"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/maleRB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Male"
+                    android:textSize="20dp"
+                    />
+                <RadioButton
+                    android:id="@+id/femaleRB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Female"
+                    android:textSize="20dp"
+                    />
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Blood Group: "
+                android:textSize="20dp"
+                android:layout_weight="2"
+
+                />
+
+            <Spinner
+                android:id="@+id/bloodGroupInput"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:textSize="20dp">
+
+            </Spinner>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="City: "
+                android:textSize="20dp"
+                android:layout_weight="2"
+
+                />
+
+            <Spinner
+                android:id="@+id/cityInput"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:textSize="20dp">
+
+            </Spinner>
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Register"
+            android:layout_gravity="center"
+            android:onClick="registerNewMember"
+            />
+
+    </LinearLayout>
+</ScrollView>
