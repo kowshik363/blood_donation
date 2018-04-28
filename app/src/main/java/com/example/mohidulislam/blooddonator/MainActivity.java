@@ -17,11 +17,18 @@ import java.io.Serializable;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements Serializable{
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity {
 
     private ListView memberLV;
     private List<Member>members;
     private MemberAdapter adapter;
     private MembarDataSource dataSource;
+    private TextView emptyRecordTV;
+    public static boolean isLoggedIn = false;
+    public static Member loggedInMember = null;
+
     private SharedPreferences preferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements Serializable{
                 startActivity(intent);
             }
         });
-        
+
     }
 
     boolean userExist(String email, String pass) {
@@ -68,6 +75,19 @@ public class MainActivity extends AppCompatActivity implements Serializable{
             Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show();
         }
     }*/
+        emptyRecordTV = findViewById(R.id.emptyRecord);
+        if(members.size()==0) emptyRecordTV.setVisibility(View.VISIBLE);
+
+        memberLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Member member = members.get(position);
+                startActivity(new Intent(MainActivity.this,DonorProfile.class).putExtra("donor",member));
+            }
+        });
+
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -82,6 +102,13 @@ public class MainActivity extends AppCompatActivity implements Serializable{
         switch (item.getItemId()) {
             case R.id.logIn:
                 startActivity(new Intent(MainActivity.this,LoginActivity.class));
+                break;
+            case R.id.logOut:
+                isLoggedIn = false;
+                Toast.makeText(this, "Logged Out", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.myAccount:
+                startActivity(new Intent(MainActivity.this,DonorProfile.class).putExtra("donor",loggedInMember));
                 String email = getIntent().getStringExtra("email");
                 String pass = getIntent().getStringExtra("pass");
                 if(userExist(email,pass)) {
@@ -102,5 +129,23 @@ public class MainActivity extends AppCompatActivity implements Serializable{
                 return super.onOptionsItemSelected(item);
         }
         return true;
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem loginItem = menu.findItem(R.id.logIn);
+        MenuItem logoutItem = menu.findItem(R.id.logOut);
+        MenuItem profileItem = menu.findItem(R.id.myAccount);
+        if(isLoggedIn) {
+            loginItem.setVisible(false);
+            logoutItem.setVisible(true);
+            profileItem.setVisible(true);
+        }
+        else {
+            loginItem.setVisible(true);
+            logoutItem.setVisible(false);
+            profileItem.setVisible(false);
+        }
+        return super.onPrepareOptionsMenu(menu);
     }
 }

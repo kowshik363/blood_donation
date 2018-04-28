@@ -19,14 +19,12 @@
         android:hint="Password"/>
 
     <Button
-        android:id="@+id/loginBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
         android:onClick="loginUser"
         />
     <Button
-        android:id="@+id/registerBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Register"

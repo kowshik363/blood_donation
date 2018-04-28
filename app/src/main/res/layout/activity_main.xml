@@ -8,6 +8,18 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/emptyRecord"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="No records Found"
+        android:textColor="@color/colorViolet"
+        android:textSize="24dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:visibility="gone"
+        />
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:text="Available Donors"
@@ -22,5 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </ListView>
+
+
 
 </RelativeLayout>

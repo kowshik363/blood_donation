@@ -6,11 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
     private EditText emailET, passET;
-    private Button loginBtn, regiBtn;
+    private MembarDataSource dataSource = new MembarDataSource(this);
+    String email,pass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,17 +20,25 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         emailET = findViewById(R.id.loginEmail);
         passET = findViewById(R.id.loginPass);
-        loginBtn = findViewById(R.id.loginBtn);
-        regiBtn = findViewById(R.id.registerBtn);
     }
 
     public void loginUser(View view) {
-        String email = emailET.getText().toString();
-        String pass = passET.getText().toString();
-        Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-        intent.putExtra("email",email);
-        intent.putExtra("pass",pass);
-        startActivity(intent);
+        email = emailET.getText().toString();
+        pass = passET.getText().toString();
+        Member member = dataSource.getMemberByEmail(email);
+        if(member != null) {
+            if (member.getPassword().equals(pass)) {
+                MainActivity.isLoggedIn = true;
+                Toast.makeText(this, "Login Successful", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                MainActivity.loggedInMember = member;
+                startActivity(intent);
+            } else {
+                Toast.makeText(this, "Invalid Password", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(this, "Invalid E-mail", Toast.LENGTH_SHORT).show();
+        }
 
     }
 

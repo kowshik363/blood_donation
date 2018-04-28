@@ -68,9 +68,9 @@ public class MembarDataSource {
         this.closeDatabase();
         return members;
     }
-    public Member getMembersByCity(String city){
+    public List<Member> getMembersByCity(String city){
         this.openDatabase();
-        Member member = null;
+        List<Member>members = new ArrayList<>();
         String arg = "'"+city+"'";
         String selection = MemberDatabaseHelper.TABLE_MEMBER_CITY+"=?";
         Cursor cursor = db.query(MemberDatabaseHelper.TABLE_NAME,null,selection,new String[]{city},null,null,null);
@@ -85,9 +85,34 @@ public class MembarDataSource {
                 String dob = cursor.getString(cursor.getColumnIndex(MemberDatabaseHelper.TABLE_MEMBER_DOB));
                 String gender = cursor.getString(cursor.getColumnIndex(MemberDatabaseHelper.TABLE_MEMBER_GENDER));
                 String bloodGroup = cursor.getString(cursor.getColumnIndex(MemberDatabaseHelper.TABLE_MEMBER_BLOOD_GROUP));
-                member = new Member(ID,name,phone,email,pass,dob,gender,bloodGroup,city);
+                Member member = new Member(ID,name,phone,email,pass,dob,gender,bloodGroup,city);
+                members.add(member);
 
             } while (cursor.moveToNext());
+        }
+        cursor.close();
+        this.closeDatabase();
+        return members;
+    }
+
+    public Member getMemberByEmail(String email){
+        Member member = null;
+        this.openDatabase();
+        String emailString = String.valueOf(email);
+        String arg = "'"+emailString+"'";
+        String selection = MemberDatabaseHelper.TABLE_MEMBER_EMAIL+"=?";
+        Cursor cursor = db.query(MemberDatabaseHelper.TABLE_NAME,null,selection,new String[]{emailString},null,null,null);
+        if(cursor != null && cursor.getCount() > 0){
+            cursor.moveToFirst();
+            int ID = cursor.getInt(cursor.getColumnIndex(MemberDatabaseHelper.TABLE_MEMBER_ID));
+            String name = cursor.getString(cursor.getColumnIndex(MemberDatabaseHelper.TABLE_MEMBER_NAME));
+            String phone = cursor.getString(cursor.getColumnIndex(MemberDatabaseHelper.TABLE_MEMBER_PHONE));
+            String pass = cursor.getString(cursor.getColumnIndex(MemberDatabaseHelper.TABLE_MEMBER_PASS));
+            String dob = cursor.getString(cursor.getColumnIndex(MemberDatabaseHelper.TABLE_MEMBER_DOB));
+            String gender = cursor.getString(cursor.getColumnIndex(MemberDatabaseHelper.TABLE_MEMBER_GENDER));
+            String bloodGroup = cursor.getString(cursor.getColumnIndex(MemberDatabaseHelper.TABLE_MEMBER_BLOOD_GROUP));
+            String city = cursor.getString(cursor.getColumnIndex(MemberDatabaseHelper.TABLE_MEMBER_CITY));
+            member = new Member(ID,name,phone,email,pass,dob,gender,bloodGroup,city);
         }
         cursor.close();
         this.closeDatabase();

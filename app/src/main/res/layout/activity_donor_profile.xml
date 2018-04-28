@@ -1,9 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DonorProfile">
+    tools:context=".DonorProfile"
+    android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/nameOutput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Name"/>
+    <TextView
+        android:id="@+id/phoneOutput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Phone"/>
+    <TextView
+        android:id="@+id/emailOutput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="E-mail"/>
+    <TextView
+        android:id="@+id/dobOutput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Date of Birth"/>
+    <TextView
+        android:id="@+id/genderOutput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Gender"/>
+    <TextView
+        android:id="@+id/bloodOutput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Blood Group"/>
+    <TextView
+        android:id="@+id/cityOutput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="City"/>
+
+    <Button
+        android:id="@+id/homeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Home"/>
+    <Button
+        android:id="@+id/updatrBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update"/>
+</LinearLayout>

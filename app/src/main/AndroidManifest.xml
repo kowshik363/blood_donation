@@ -17,11 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".DonorRegistration" />
-        <activity android:name=".DonorProfile" >
-            USER PROFILE
-        </activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".MemberProfile"></activity>
+        <activity android:name=".DonorProfile" />
+        <activity android:name=".LoginActivity"></activity>
     </application>
 
 </manifest>
