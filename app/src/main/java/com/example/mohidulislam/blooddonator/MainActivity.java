@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this,DonorProfile.class).putExtra("donor",member));
             }
         });
-        
+
     }
 
 
