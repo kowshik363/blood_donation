@@ -13,6 +13,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -38,6 +40,8 @@ public class MainActivity extends AppCompatActivity implements Serializable{
         memberLV.setAdapter(adapter);
         emptyRecordTV = findViewById(R.id.emptyRecord);
         if(members.size()==0) emptyRecordTV.setVisibility(View.VISIBLE);
+        preferences = getApplicationContext().getSharedPreferences("Pref",0);
+        isLoggedIn = preferences.getBoolean("isLoggedIn",false);
 
         memberLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -83,12 +87,13 @@ public class MainActivity extends AppCompatActivity implements Serializable{
                 Toast.makeText(this, "Logged Out", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.myAccount:
-                startActivity(new Intent(MainActivity.this,DonorProfile.class).putExtra("donor",loggedInMember));
-                String email = getIntent().getStringExtra("email");
-                String pass = getIntent().getStringExtra("pass");
-                if(userExist(email,pass)) {
-                    Toast.makeText(this, "Loged In", Toast.LENGTH_SHORT).show();
-                } else   Toast.makeText(this, "Wrong Email or Password", Toast.LENGTH_SHORT).show();
+                if(isLoggedIn) {
+                    Gson gson = new Gson();
+                    String json = preferences.getString("loggedInMember",null);
+                    Member loggedInMember = gson.fromJson(json, Member.class);
+                    startActivity(new Intent(MainActivity.this,DonorProfile.class).putExtra("donor",loggedInMember));
+                }
+
                 break;
             case R.id.registration:
                 Intent intent = new Intent(MainActivity.this, DonorRegistration.class);
@@ -104,16 +109,20 @@ public class MainActivity extends AppCompatActivity implements Serializable{
     public boolean onPrepareOptionsMenu(Menu menu) {
         MenuItem loginItem = menu.findItem(R.id.logIn);
         MenuItem logoutItem = menu.findItem(R.id.logOut);
+        MenuItem registerItem = menu.findItem(R.id.registration);
         MenuItem profileItem = menu.findItem(R.id.myAccount);
+
         if(isLoggedIn) {
             loginItem.setVisible(false);
             logoutItem.setVisible(true);
             profileItem.setVisible(true);
+            registerItem.setVisible(false);
         }
         else {
             loginItem.setVisible(true);
             logoutItem.setVisible(false);
             profileItem.setVisible(false);
+            registerItem.setVisible(true);
         }
         return super.onPrepareOptionsMenu(menu);
     }

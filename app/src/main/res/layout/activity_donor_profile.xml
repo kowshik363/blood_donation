@@ -8,42 +8,69 @@
     tools:context=".DonorProfile"
     android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/nameOutput"
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Name"/>
-    <EditText
-        android:id="@+id/phoneOutput"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/nameOutput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Name"/>
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Phone"/>
-    <EditText
-        android:id="@+id/emailOutput"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/phoneOutput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Phone"/>
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="E-mail"/>
-    <TextView
-        android:id="@+id/dobOutput"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/emailOutput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="E-mail"/>
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Date of Birth"/>
-    <EditText
-        android:id="@+id/genderOutput"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/dobOutput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Date of Birth"/>
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Gender"/>
-    <EditText
-        android:id="@+id/bloodOutput"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/genderOutput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gender"/>
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Blood Group"/>
-    <EditText
-        android:id="@+id/cityOutput"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/bloodOutput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Blood Group"/>
+    </android.support.design.widget.TextInputLayout>
+    <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="City"/>
-
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/cityOutput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="City"/>
+    </android.support.design.widget.TextInputLayout>
     <Button
         android:id="@+id/homeBtn"
         android:layout_width="wrap_content"

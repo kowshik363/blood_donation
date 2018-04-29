@@ -4,8 +4,12 @@ import android.content.Intent;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +28,7 @@ import static java.util.Calendar.YEAR;
 public class MemberProfile extends AppCompatActivity {
 
     private TextView memberNameTV, memberAgeTV, memberLocationTV, memberBloodGroupTV, memberEmailTV, memberContactTV;
+    ImageView callIV, emailIV, messageIV;
     private DateFormat format;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,13 +36,18 @@ public class MemberProfile extends AppCompatActivity {
         setContentView(R.layout.activity_member_profile);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        Member member = (Member) bundle.getSerializable("memberInfo");
+        final Member member = (Member) bundle.getSerializable("memberInfo");
         memberNameTV = findViewById(R.id.memberNameValue);
         memberAgeTV = findViewById(R.id.memberAgeValue);
         memberLocationTV = findViewById(R.id.memberLocationValue);
         memberBloodGroupTV = findViewById(R.id.memberBloodGroupValue);
         memberEmailTV = findViewById(R.id.memberEmailValue);
         memberContactTV = findViewById(R.id.memberContactValue);
+
+        callIV = findViewById(R.id.callIV);
+        emailIV = findViewById(R.id.emailIV);
+        messageIV = findViewById(R.id.messageIV);
+
         format = new SimpleDateFormat("d/M/Y", Locale.ENGLISH);
         Date today = new Date();
         Date birthdate = getDate(member.getDateOfBirth());
@@ -49,6 +59,35 @@ public class MemberProfile extends AppCompatActivity {
         memberBloodGroupTV.setText(member.getBloodGroup());
         memberEmailTV.setText(member.getEmail());
         memberContactTV.setText(member.getPhone());
+
+        callIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent callIntent = new Intent(Intent.ACTION_DIAL);
+                callIntent.setData(Uri.parse("tel:"+member.getPhone()));
+                startActivity(callIntent);
+            }
+        });
+
+        emailIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + member.getEmail()));
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Blood Dontaion");
+                emailIntent.putExtra(Intent.EXTRA_TEXT, "");
+//emailIntent.putExtra(Intent.EXTRA_HTML_TEXT, body); //If you are using HTML in your body text
+
+                startActivity(Intent.createChooser(emailIntent, ""));
+            }
+        });
+
+        messageIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("sms:"
+                        + member.getPhone())));
+            }
+        });
     }
 
     public Date getDate(String dateText) {

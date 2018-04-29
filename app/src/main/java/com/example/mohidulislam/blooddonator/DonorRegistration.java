@@ -11,9 +11,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
@@ -29,7 +31,8 @@ public class DonorRegistration extends AppCompatActivity {
     private RadioGroup genderRG;
     private EditText nameET, emailET, phoneET, passET;
     private Spinner bloodGroupSP, citySP;
-    private Button dobBtn;
+    private TextView dobTV;
+    private ImageButton dobBtn;
     private Calendar calendar;
     MembarDataSource dataSource;
 
@@ -51,7 +54,8 @@ public class DonorRegistration extends AppCompatActivity {
         phoneET = findViewById(R.id.phoneInput);
         bloodGroupSP = findViewById(R.id.bloodGroupInput);
         citySP = findViewById(R.id.cityInput);
-        dobBtn = findViewById(R.id.dobInput);
+        dobBtn = findViewById(R.id.dobButton);
+        dobTV = findViewById(R.id.dobInput);
         passET = findViewById(R.id.passInput);
         calendar = Calendar.getInstance(Locale.getDefault());
         year = calendar.get(Calendar.YEAR);
@@ -110,7 +114,7 @@ public class DonorRegistration extends AppCompatActivity {
                         Calendar temp = Calendar.getInstance();
                         temp.set(year,month,dayOfMonth);
                         dateOfBirth = simpleDateFormat.format(temp.getTime());
-                        dobBtn.setText(dateOfBirth);
+                        dobTV.setText(dateOfBirth);
                     }
                 }, year, month, day);
                 datePickerDialog.show();

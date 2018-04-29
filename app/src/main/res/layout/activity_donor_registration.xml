@@ -4,112 +4,157 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DonorRegistration">
+    tools:context=".DonorRegistration"
+    android:background="#ddd">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
-        <TextView
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Registration"
-            android:textSize="30dp"
-            android:textColor="@color/colorDarkBlue"
-            android:textStyle="bold"
-            android:gravity="center"  />
-
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:orientation="vertical">
-
-
-           <EditText
-               android:id="@+id/nameInput"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:hint="Name"/>
-
-           <EditText
-               android:id="@+id/phoneInput"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:hint="Phone"/>
-           <EditText
-               android:id="@+id/emailInput"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:hint="E-mail"/>
-
-           <EditText
-               android:id="@+id/passInput"
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:hint="Password"/>
-       </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Date of Birth"
-                android:textSize="20dp"
-                android:layout_weight="1"
-                />
-            <Button
-                android:id="@+id/dobInput"
-                android:layout_width="0dp"
+                android:text="Registration"
+                android:textSize="30dp"
+                android:textColor="@color/colorDarkBlue"
+                android:textStyle="bold"
+                android:gravity="center"  />
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Select"
-                android:layout_weight="2"
-                android:textAllCaps="false"
-                android:textSize="20sp"
-                />
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:layout_marginTop="30dp">
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-        </LinearLayout>
-
-        <LinearLayout
+                    <EditText
+                        android:id="@+id/nameInput"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Name"/>
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/phoneInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Phone"/>
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/emailInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="E-mail"/>
+                </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/passInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Password"/>
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Gender"
-                android:textSize="20dp"
-                />
-            <RadioGroup
-                android:id="@+id/genderInput"
-                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Date of Birth"
+                    android:textSize="20dp"
+                    android:layout_weight="1.5"
+                    />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.3"
+                    android:id="@+id/dobInput"
+                    android:text=""/>
+                <ImageButton
+                    android:id="@+id/dobButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@android:drawable/ic_menu_my_calendar"
+                    android:textColor="@android:color/white"
+                    android:layout_weight="0.2"
+                    android:textAllCaps="false"
+                    android:textSize="20sp"
+                    />
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <RadioButton
-                    android:id="@+id/maleRB"
+                android:orientation="horizontal"
+                android:padding="10dp">
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Male"
+                    android:text="Gender"
                     android:textSize="20dp"
                     />
-                <RadioButton
-                    android:id="@+id/femaleRB"
+                <RadioGroup
+                    android:id="@+id/genderInput"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Female"
-                    android:textSize="20dp"
-                    />
-            </RadioGroup>
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:id="@+id/maleRB"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Male"
+                        android:textSize="20dp"
+                        />
+                    <RadioButton
+                        android:id="@+id/femaleRB"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Female"
+                        android:textSize="20dp"
+                        />
+                </RadioGroup>
 
-        </LinearLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
 
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="10dp">
 
             <TextView
                 android:layout_width="0dp"
@@ -130,11 +175,17 @@
             </Spinner>
 
         </LinearLayout>
-
+        </android.support.v7.widget.CardView>
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="10dp">
 
             <TextView
                 android:layout_width="0dp"
@@ -155,11 +206,15 @@
             </Spinner>
 
         </LinearLayout>
+        </android.support.v7.widget.CardView>
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Register"
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/white"
+            android:layout_margin="10dp"
             android:layout_gravity="center"
             android:onClick="registerNewMember"
             />
