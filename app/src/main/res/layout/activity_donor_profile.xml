@@ -8,17 +8,17 @@
     tools:context=".DonorProfile"
     android:orientation="vertical">
 
-    <TextView
+    <EditText
         android:id="@+id/nameOutput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Name"/>
-    <TextView
+    <EditText
         android:id="@+id/phoneOutput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Phone"/>
-    <TextView
+    <EditText
         android:id="@+id/emailOutput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,17 +28,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Date of Birth"/>
-    <TextView
+    <EditText
         android:id="@+id/genderOutput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Gender"/>
-    <TextView
+    <EditText
         android:id="@+id/bloodOutput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Blood Group"/>
-    <TextView
+    <EditText
         android:id="@+id/cityOutput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:text="Home"/>
     <Button
-        android:id="@+id/updatrBtn"
+        android:id="@+id/updateBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Update"/>

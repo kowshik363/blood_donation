@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -95,6 +96,18 @@ public class MembarDataSource {
         return members;
     }
 
+    public void updateMemeberById(int memberId, Member member)  {
+        ContentValues cv = new ContentValues();
+        cv.put(MemberDatabaseHelper.TABLE_MEMBER_NAME,member.getName());
+        cv.put(MemberDatabaseHelper.TABLE_MEMBER_PHONE,member.getPhone());
+        cv.put(MemberDatabaseHelper.TABLE_MEMBER_EMAIL,member.getEmail());
+        cv.put(MemberDatabaseHelper.TABLE_MEMBER_CITY,member.getCity());
+        this.openDatabase();
+        db.update(MemberDatabaseHelper.TABLE_NAME,cv,"member_id="+memberId,null);
+        this.closeDatabase();
+        this.getMemberByEmail(member.getEmail());
+    }
+
     public Member getMemberByEmail(String email){
         Member member = null;
         this.openDatabase();
@@ -118,4 +131,6 @@ public class MembarDataSource {
         this.closeDatabase();
         return member;
     }
+
+
 }

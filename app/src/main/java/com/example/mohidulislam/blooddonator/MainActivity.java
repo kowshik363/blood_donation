@@ -17,9 +17,6 @@ import java.io.Serializable;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements Serializable{
-import java.util.List;
-
-public class MainActivity extends AppCompatActivity {
 
     private ListView memberLV;
     private List<Member>members;
@@ -39,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
         members = dataSource.getAllMembers();
         adapter = new MemberAdapter(this,members);
         memberLV.setAdapter(adapter);
+        emptyRecordTV = findViewById(R.id.emptyRecord);
+        if(members.size()==0) emptyRecordTV.setVisibility(View.VISIBLE);
 
         memberLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -65,30 +64,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this,DonorRegistration.class));
     }
 
-   /* public void login(View view) {
-        String uemail = "k@gmail.com";
-        String upass = "789456";
-        boolean login = loginExist(uemail,upass);
-        if (login) {
-            Toast.makeText(this, "Login Successfull!", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show();
-        }
-    }*/
-        emptyRecordTV = findViewById(R.id.emptyRecord);
-        if(members.size()==0) emptyRecordTV.setVisibility(View.VISIBLE);
-
-        memberLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Member member = members.get(position);
-                startActivity(new Intent(MainActivity.this,DonorProfile.class).putExtra("donor",member));
-            }
-        });
-
-    }
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -114,12 +89,6 @@ public class MainActivity extends AppCompatActivity {
                 if(userExist(email,pass)) {
                     Toast.makeText(this, "Loged In", Toast.LENGTH_SHORT).show();
                 } else   Toast.makeText(this, "Wrong Email or Password", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.logOut:
-                Toast.makeText(this, "Logout Clicked", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.myAccount:
-                Toast.makeText(this, "Myaccount Clicked", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.registration:
                 Intent intent = new Intent(MainActivity.this, DonorRegistration.class);

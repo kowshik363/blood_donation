@@ -19,6 +19,7 @@
         <activity android:name=".DonorRegistration" />
         <activity android:name=".DonorProfile" />
         <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".MemberProfile"></activity>
     </application>
 
 </manifest>

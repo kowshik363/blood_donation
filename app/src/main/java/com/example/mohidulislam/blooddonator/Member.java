@@ -3,6 +3,7 @@ package com.example.mohidulislam.blooddonator;
 import java.io.Serializable;
 
 public class Member implements Serializable{
+
     private int ID;
     private String name;
     private String phone;
@@ -34,6 +35,14 @@ public class Member implements Serializable{
         this.gender = gender;
         this.bloodGroup = bloodGroup;
         this.city = city;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     public String getName() {
